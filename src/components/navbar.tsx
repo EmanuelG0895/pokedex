@@ -6,11 +6,11 @@ import { SignIn } from "./login/signin-button";
 async function Navbar() {
   const session = await auth();
   return (
-    <div className="flex justify-between p-2.5 bg-white text-black rounded-lg">
-      <div className="bg-black">
+    <div className="flex justify-between p-2.5 bg-white text-black rounded-lg items-center">
+      <div>
         <img
-          className="rounded-full"
-          src={session?.user?.image ?? "/images/pokeball.svg"}
+          className="rounded-full w-12 h-12"
+          src={session?.user?.image ?? "/icons/pokeball.svg"}
           alt="User Avatar"
         />
         <p>{session?.user?.name}</p>

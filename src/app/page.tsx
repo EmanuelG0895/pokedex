@@ -1,3 +1,3 @@
 export default async function Home() {
-  return <></>;
+  return <div className="bg-bug text-white">hola mundo</div>;
 }

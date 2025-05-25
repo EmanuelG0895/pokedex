@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Pokedex",
   description: "",
+  icons: {
+    icon: "/images/pokeball.svg",
+  },
 };
 
 export default function RootLayout({
@@ -14,10 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="">
-        <Navbar />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
