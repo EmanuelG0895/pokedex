@@ -9,7 +9,7 @@ export default async function LocaleLayout({
 }) {
   return (
     <NextIntlClientProvider>
-      <Navbar />
+      {/* <Navbar /> */}
       {children}
     </NextIntlClientProvider>
   );

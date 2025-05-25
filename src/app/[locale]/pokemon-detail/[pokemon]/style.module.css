@@ -1,0 +1,22 @@
+.bgPokeball {
+  background-color: black;
+}
+
+/* @media (min-width: 768px) {
+  .bg-pokeball::before {
+    background-size: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-pokeball::before {
+    background-size: 25%;
+    background-position: right center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bg-pokeball::before {
+    background-size: 20%;
+  }
+} */
