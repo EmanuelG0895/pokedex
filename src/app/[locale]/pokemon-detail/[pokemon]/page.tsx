@@ -3,6 +3,8 @@ import React from "react";
 import { useParams, useRouter } from "next/navigation";
 import PokemonType from "@/components/pokemon-type";
 import "./style.module.css";
+import About from "@/components/about";
+import ProgressBar from "@/components/progress-bar";
 
 export default function PokemonDetails() {
   const params = useParams();
@@ -42,6 +44,19 @@ export default function PokemonDetails() {
           <PokemonType pokemonType="type" className="bg-amber-500" />
         </div>
         <h2 className="text-light font-bold capitalize text-[16px]">About</h2>
+        <div className="divide-x flex justify-center">
+          <About />
+          <About />
+          <About />
+        </div>
+        <div className="container mx-auto">
+          <ProgressBar stat="HP" value="50" />
+          <ProgressBar stat="HP" value="50" />
+          <ProgressBar stat="HP" value="50" />
+          <ProgressBar stat="HP" value="50" />
+          <ProgressBar stat="HP" value="50" />
+          <ProgressBar stat="HP" value="50" />
+        </div>
       </section>
     </main>
   );

@@ -6,7 +6,7 @@ interface PokemonCardParams {
 }
 export default function PokemonCard({ number, name }: PokemonCardParams) {
   return (
-    <Link href="/pokemon-detail/pokemonName" className="relative rounded-lg w-[104px] h-[120px] lg:w-[200px] lg:h-[200px] bg-white shadow-lg flex flex-col items-center justify-between">
+    <Link href="/pokemon-detail/pokemonName" className="relative rounded-lg w-[104px] h-full lg:w-[200px] lg:h-[200px] bg-white shadow-[0px_0px_10px_2px_rgba(0,0,0,0.25)] flex flex-col items-center justify-between">
       {/* Pokemon Number */}
       <div className="w-full flex justify-end py-1 px-2">
         <span className="text-lg font-medium text-gray-500">{number}</span>
