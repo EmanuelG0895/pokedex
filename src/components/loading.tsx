@@ -4,7 +4,7 @@ export default function Loading() {
       <img
         src="/icons/pokeball.svg"
         alt="Cargando..."
-        className="animate-spin h-12 w-12"
+        className="animate-spin h-12 w-12 mb-5"
       />
       Espera un momento entrenador estamos hablando con el profesor...
     </div>
