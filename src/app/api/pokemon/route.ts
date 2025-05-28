@@ -2,7 +2,7 @@ const BASE_URL = process.env.PokeAPI_URL;
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
-  const limit = searchParams.get("limit") || "25";
+  const limit = searchParams.get("limit") || "29";
   const offset = searchParams.get("offset") || "0";
 
   try {
