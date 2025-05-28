@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [pokemonList, setPokemonList] = useState<any[]>([]);
-  const [limit] = useState(150); // cantidad por página
+  const limit = 153;
   const [offset, setOffset] = useState(0);
   const totalItems = 1500;
   const totalPages = Math.ceil(totalItems / limit);
@@ -39,7 +39,7 @@ export default function HomePage() {
       <div className="h-[calc(100svh-100px)] inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center col-span-3">
-            <Loading />
+            <Loading message="Espera un momento entrenador estamos hablando con el profesor..." />
           </div>
         ) : (
           pokemonList.map((pokemon: any, index: number) => (

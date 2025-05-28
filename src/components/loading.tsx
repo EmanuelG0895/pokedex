@@ -1,4 +1,7 @@
-export default function Loading() {
+interface LoadingProps {
+  message: string;
+}
+export default function Loading({ message }: LoadingProps) {
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <img
@@ -6,7 +9,7 @@ export default function Loading() {
         alt="Cargando..."
         className="animate-spin h-12 w-12 mb-5"
       />
-      Espera un momento entrenador estamos hablando con el profesor...
+      {message}
     </div>
   );
 }
