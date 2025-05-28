@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import PokemonType from "@/components/pokemon-type";
 import "./style.module.css";
@@ -12,9 +12,9 @@ export default function PokemonDetails() {
   const router = useRouter();
 
   return (
-    <main className="bg-light h-full p-2">
-      <header className="bg-[url('/images/pokeballOpacity.svg')] h-58 relative bg-no-repeat bg-right-top bg-[length:65%] md:bg-[length:30%] lg:bg-[length:20%] lg:bg-[position:right_center] xl:bg-[length:14%]">
-        <div className="flex items-center justify-between px-4">
+    <main className="bg-light h-svh p-2 w-full">
+      <header className="bg-[url('/icons/pokeball-opacity.svg')] h-60 relative bg-no-repeat bg-right-top bg-[length:65%] md:bg-[length:30%] lg:bg-[length:20%] lg:bg-[position:right_center] xl:bg-[length:14%]">
+        <div className="text-white font-bold flex items-center justify-between px-4">
           <button
             onClick={() => router.back()}
             aria-label="Go back"
@@ -22,13 +22,13 @@ export default function PokemonDetails() {
           >
             <img
               className="h-8 w-8 opacidad"
-              src="/icons/arrow_back.svg"
+              src="/navigation/arrow_back.svg"
               alt=""
               role="presentation"
             />
           </button>
-          <h1 className="capitalize text-lg">{pokemon}</h1>
-          <span>#100</span>
+          <h1 className="capitalize text-2xl md:text-3xl">{pokemon}</h1>
+          <span className="md:text-base text-xs">#100</span>
         </div>
         <div className="absolute top-11/12 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <img
@@ -38,18 +38,20 @@ export default function PokemonDetails() {
           />
         </div>
       </header>
-      <section className="bg-white flex flex-col rounded-lg space-y-4 text-center mt-2 lg:w-1/2 mx-auto">
+      <section className="bg-white flex flex-col rounded-lg space-y-4 text-center mt-2 lg:w-full mx-auto">
         <div className="flex justify-center space-x-4 mt-16">
           <PokemonType pokemonType="type" className="bg-amber-500" />
           <PokemonType pokemonType="type" className="bg-amber-500" />
         </div>
-        <h2 className="text-light font-bold capitalize text-[16px]">About</h2>
+        <h2 className="text-light font-bold capitalize text-[16px]">
+          add to fav add to team
+        </h2>
         <div className="divide-x flex justify-center">
           <About />
           <About />
           <About />
         </div>
-        <div className="container mx-auto">
+        <div className="container mx-auto w-full p-4">
           <ProgressBar stat="HP" value="50" />
           <ProgressBar stat="HP" value="50" />
           <ProgressBar stat="HP" value="50" />

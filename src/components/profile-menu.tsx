@@ -1,18 +1,9 @@
 "use client";
-import { auth } from "@/auth";
-import { useEffect, useState } from "react";
-import type { Session } from "@auth/core/types";
+"use client";
+import { useSession } from "next-auth/react";
 
 export default function ProfileMenu() {
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    const fetchSession = async () => {
-      const result = await auth();
-      setSession(result);
-    };
-    fetchSession();
-  }, []);
+  const { data: session } = useSession();
 
   return (
     <details className="relative">

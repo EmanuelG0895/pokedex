@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import Link from "next/link";
 import ProfileMenu from "./profile-menu";
 import SearchBar from "./search-bar";
-import SignIn from "./login/signin-button";
+import { SignIn } from "./login/signin-button";
 
 function Navbar() {
   return (
