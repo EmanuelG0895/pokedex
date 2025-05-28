@@ -11,7 +11,7 @@ export default function PokemonCard({ url }: PokemonCardParams) {
       try {
         const response = await fetch(url);
         const data = await response.json(); // Esperar la conversión a JSON
-        setPokemonData(data)
+        setPokemonData(data);
       } catch (error) {
         console.error("Error fetching Pokémon:", error);
       }
@@ -22,33 +22,29 @@ export default function PokemonCard({ url }: PokemonCardParams) {
   return (
     <Link
       href={`/pokemon-detail/${pokemonData?.species?.name}`}
-      className="relative rounded-lg bg-white shadow-[2px_2px_2px_1px_var(--tw-shadow-color,_rgb(0_0_0_/_.1)),_0_1px_1px_1px_var(--tw-shadow-color,_rgb(0_0_0_/_.1))] min-w-[104px] min-h-[108px]"
+      className="relative max-w-[108px] max-h-[104px] min-w-[104px] min-h-[108px] rounded-lg shadow-[2px_2px_2px_1px_var(--tw-shadow-color,_rgb(0_0_0_/_.1)),_0_1px_1px_1px_var(--tw-shadow-color,_rgb(0_0_0_/_.1))] overflow-hidden"
     >
-      {/* Pokemon Number */}
-      <div className="flex justify-end p-2">
-        <p className="text-[8px] md:mb-1 md:text-base font-medium text-gray-500">
-          # {pokemonData.id}
-        </p>
-      </div>
-
-      <div>
-        {/* Pokémon silhouette shape */}
+      <div className="flex flex-col h-full w-full">
+        <div className="w-full h-full bg-white">
+          <p className="text-[8px] md:mb-1 md:text-base font-medium text-medium text-end py-1 px-2">
+            # {pokemonData.id}
+          </p>
+        </div>
         <img
-          className="rounded-lg flex -top-3 md:-top-5 left-0 inset-x-0 inset-y-0 z-20 relative px-4  min-w-[72px] min-h-[72px]"
+          className="absolute max-w-[72px] max-h-[72px] top-0 bottom-5 left-0 right-0 m-auto"
           src={
             pokemonData?.sprites?.other?.["official-artwork"]?.front_default
-              ?  pokemonData?.sprites?.other?.["official-artwork"]?.front_default
+              ? pokemonData?.sprites?.other?.["official-artwork"]?.front_default
               : "/images/default-pokemon.svg"
           }
           alt="pokemonImage"
         />
-      </div>
 
-      {/* Pokemon Name */}
-      <div className="w-full text-center bg-background absolute bottom-0 rounded-t-lg pt-6 md:pt-11 rounded-lg">
-        <h3 className="text-xs md:text-base font-normal capitalize pb-1">
-          {pokemonData?.species?.name}
-        </h3>
+        <div className="w-full rounded-t-lg h-full bg-gray-200 text-center flex items-end justify-center">
+          <p className="text-xs md:text-base font-normal capitalize pb-1">
+            {pokemonData?.species?.name}
+          </p>
+        </div>
       </div>
     </Link>
   );
