@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <div className="bg-primary h-svh">
       <Navbar />
-      <div className="h-[calc(100svh-100px)] inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto">
+      <div className="custom-scrollbar h-[calc(100svh-100px)] inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto">
         {loading ? (
           <div className="w-full h-full flex items-center justify-center col-span-3">
             <Loading message="Espera un momento entrenador estamos hablando con el profesor..." />
