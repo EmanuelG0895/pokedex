@@ -34,7 +34,7 @@ export default function PokemonCard({ url }: PokemonCardParams) {
       <div>
         {/* Pokémon silhouette shape */}
         <img
-          className="rounded-lg flex -top-4 md:-top-5 left-0 inset-x-0 inset-y-0 z-20 relative px-4  min-w-[72px] min-h-[72px]"
+          className="rounded-lg flex -top-3 md:-top-5 left-0 inset-x-0 inset-y-0 z-20 relative px-4  min-w-[72px] min-h-[72px]"
           src={
             pokemonData?.sprites?.other?.["official-artwork"]?.front_default
               ?  pokemonData?.sprites?.other?.["official-artwork"]?.front_default
