@@ -31,7 +31,7 @@ export default function PokemonCard({ url }: PokemonCardParams) {
           </p>
         </div>
         <img
-          className="absolute max-w-[72px] max-h-[72px] top-0 bottom-5 left-0 right-0 m-auto"
+          className="absolute max-w-[72px] max-h-[72px] top-0 bottom-5 left-0 right-0 m-auto md:top-4"
           src={
             pokemonData?.sprites?.other?.["official-artwork"]?.front_default
               ? pokemonData?.sprites?.other?.["official-artwork"]?.front_default
@@ -40,7 +40,7 @@ export default function PokemonCard({ url }: PokemonCardParams) {
           alt="pokemonImage"
         />
 
-        <div className="w-full rounded-t-lg h-full bg-gray-200 text-center flex items-end justify-center">
+        <div className="w-full rounded-t-lg h-full md:mt-5 bg-gray-200 text-center flex items-end justify-center">
           <p className="text-xs md:text-base font-normal capitalize pb-1">
             {pokemonData?.species?.name}
           </p>

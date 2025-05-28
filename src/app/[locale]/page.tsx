@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/loading";
 import Navbar from "@/components/navbar";
 import Pagination from "@/components/paginacion";
 import PokemonCard from "@/components/pokemon-card";
@@ -8,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [pokemonList, setPokemonList] = useState<any[]>([]);
-  const [limit, setLimit] = useState("30");
+  const [limit, setLimit] = useState("150");
   const [offset, setOffset] = useState("0");
 
   useEffect(() => {
@@ -16,7 +17,9 @@ export default function HomePage() {
       .then((res) => res.json())
       .then((data) => {
         setPokemonList(data.results);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        },5000);
       })
       .catch((err) => {
         console.error("Error:", err);
@@ -27,9 +30,11 @@ export default function HomePage() {
   return (
     <div className="bg-primary h-svh">
       <Navbar />
-      <div className="h-[calc(100svh-100px)] md:h-auto inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto ">
+      <div className="h-[calc(100svh-100px)] inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto ">
         {loading ? (
-          <p>Cargando pokémons...</p>
+          <div className="w-full h-full flex items-center justify-center col-span-3">
+            <Loading />
+          </div>
         ) : (
           pokemonList.map((pokemon: any, index: number) => (
             <PokemonCard key={index} url={pokemon.url} />

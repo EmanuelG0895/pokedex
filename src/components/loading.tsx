@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="flex flex-col items-center justify-center h-40">
+    <div className="flex flex-col items-center justify-center w-full">
       <img
         src="/icons/pokeball.svg"
         alt="Cargando..."
