@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "@/components/navbar";
+import Pagination from "@/components/paginacion";
 import PokemonCard from "@/components/pokemon-card";
 import { useEffect, useState } from "react";
 
@@ -26,7 +27,7 @@ export default function HomePage() {
   return (
     <div className="bg-primary h-svh">
       <Navbar />
-      <div className="inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto ">
+      <div className="h-[calc(100svh-100px)] md:h-auto inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto ">
         {loading ? (
           <p>Cargando pokémons...</p>
         ) : (
@@ -35,7 +36,9 @@ export default function HomePage() {
           ))
         )}
       </div>
-      <div className="text-center text-3xl text-white">pagination</div>
+      <div className="flex justify-center items-center mt-1">
+        <Pagination />
+      </div>
     </div>
   );
 }
