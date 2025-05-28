@@ -12,7 +12,7 @@ export default function PokemonCard({ number, name, url }: PokemonCardParams) {
       className="relative rounded-lg bg-white shadow-[0px_0px_10px_2px_rgba(0,0,0,0.25)] "
     >
       {/* Pokemon Number */}
-      <div className="flex justify-end p-2 mb-2">
+      <div className="flex justify-end p-2 mb-2 md:mb-4">
         <p className="text-xs md:text-base font-medium text-gray-500">
           # {number}
         </p>
@@ -21,7 +21,7 @@ export default function PokemonCard({ number, name, url }: PokemonCardParams) {
       <div>
         {/* Pokémon silhouette shape */}
         <img
-          className="rounded-lg flex -top-5 left-0 inset-x-0 inset-y-0 z-20 relative px-4"
+          className="rounded-lg flex -top-5 md:-top-7 left-0 inset-x-0 inset-y-0 z-20 relative px-4"
           src="/images/default-pokemon.svg"
           alt="pokemonImage"
         />
