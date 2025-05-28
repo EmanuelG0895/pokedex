@@ -21,14 +21,14 @@ export default function PokemonCard({ number, name, url }: PokemonCardParams) {
       <div>
         {/* Pokémon silhouette shape */}
         <img
-          className="rounded-lg flex -top-1 md:-top-5 left-0 inset-x-0 inset-y-0 z-20 relative px-4"
+          className="rounded-lg flex -top-2 md:-top-5 left-0 inset-x-0 inset-y-0 z-20 relative px-4"
           src="/images/default-pokemon.svg"
           alt="pokemonImage"
         />
       </div>
 
       {/* Pokemon Name */}
-      <div className="w-full text-center bg-background absolute bottom-0 rounded-t-lg pt-4  rounded-lg">
+      <div className="w-full text-center bg-background absolute bottom-0 rounded-t-lg pt-6  rounded-lg">
         <h3 className="text-xs md:text-base font-normal capitalize">{name}</h3>
       </div>
     </Link>
