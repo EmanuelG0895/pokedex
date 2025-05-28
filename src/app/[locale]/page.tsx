@@ -27,7 +27,7 @@ export default function HomePage() {
   return (
     <div className="bg-primary h-svh">
       <Navbar />
-      <div className="grid grid-cols-3 gap-y-2 justify-items-center rounded-lg bg-white mx-4 overflow-auto px-3 py-7 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-8">
+      <div className=" inset-shadow-sm grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center rounded-lg bg-white mx-4 overflow-auto px-2.5 py-7 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-8">
         {loading ? (
           <p>Cargando pokémons...</p>
         ) : (
@@ -35,7 +35,7 @@ export default function HomePage() {
             <PokemonCard
               key={index}
               name={pokemon.name}
-              number={index + 1}
+              number={999}
               url={pokemon.url}
             />
           ))

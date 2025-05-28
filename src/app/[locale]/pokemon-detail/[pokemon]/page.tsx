@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import PokemonType from "@/components/pokemon-type";
-import "./style.module.css";
 import About from "@/components/about";
 import ProgressBar from "@/components/progress-bar";
 
