@@ -9,23 +9,22 @@ export default function PokemonCard({ number, name, url }: PokemonCardParams) {
   return (
     <Link
       href={`/pokemon-detail/${name}`}
-      className="relative rounded-lg md:w-[104px] md:h-full lg:w-[200px] lg:h-[200px] bg-white shadow-[0px_0px_10px_2px_rgba(0,0,0,0.25)] flex flex-col items-center justify-between"
+      className="relative rounded-lg bg-white shadow-[0px_0px_10px_2px_rgba(0,0,0,0.25)] "
     >
       {/* Pokemon Number */}
-      <div className="w-full flex justify-end py-1 px-2">
-        <span className="text-xs md:text-base font-medium text-gray-500">{number}</span>
+      <div className="flex justify-end p-2">
+        <span className="text-xs md:text-base font-medium text-gray-500">
+          {number}
+        </span>
       </div>
 
-      {/* Pokemon Silhouette */}
-      <div className="flex items-center justify-center">
-        <div>
-          {/* Pokémon silhouette shape */}
-          <img
-            className="w-[72px] h-[72px] rounded-lg flex -top-6 z-20 relative lg:w-[150px] lg:h-[150px]"
-            src="/images/default-pokemon.svg"
-            alt=""
-          />
-        </div>
+      <div>
+        {/* Pokémon silhouette shape */}
+        <img
+          className="rounded-lg flex -top-2 left-0 inset-x-0 inset-y-0 z-20 relative p-4"
+          src="/images/default-pokemon.svg"
+          alt="pokemonImage"
+        />
       </div>
 
       {/* Pokemon Name */}
