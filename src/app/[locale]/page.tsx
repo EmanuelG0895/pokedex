@@ -14,7 +14,6 @@ export default function HomePage() {
     fetch(`/api/pokemon?limit=${limit}&offset=${offset}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
         setPokemonList(data.results);
         setLoading(false);
       })
@@ -27,17 +26,12 @@ export default function HomePage() {
   return (
     <div className="bg-primary h-svh">
       <Navbar />
-      <div className=" inset-shadow-sm grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center rounded-lg bg-white mx-4 overflow-auto px-2.5 py-7 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-8">
+      <div className="inset-shadow-sm grid grid-cols-3 gap-2 md:gap-y-4 px-2.5 py-7 md:grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] justify-items-center rounded-lg bg-white mx-4 overflow-auto ">
         {loading ? (
           <p>Cargando pokémons...</p>
         ) : (
           pokemonList.map((pokemon: any, index: number) => (
-            <PokemonCard
-              key={index}
-              name={pokemon.name}
-              number={999}
-              url={pokemon.url}
-            />
+            <PokemonCard key={index} url={pokemon.url} />
           ))
         )}
       </div>
