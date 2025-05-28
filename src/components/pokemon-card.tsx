@@ -9,7 +9,7 @@ export default function PokemonCard({ number, name, url }: PokemonCardParams) {
   return (
     <Link
       href={`/pokemon-detail/${name}`}
-      className="relative rounded-lg bg-white shadow-[0px_0px_10px_2px_rgba(0,0,0,0.25)] "
+      className="relative rounded-lg bg-white shadow-sm"
     >
       {/* Pokemon Number */}
       <div className="flex justify-end p-2 mb-2 md:mb-4">
