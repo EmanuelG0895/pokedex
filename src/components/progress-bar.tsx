@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 interface progressBarProps {
   value: string;
   stat: string;
+  type: string;
 }
 
-export default function ProgressBar({ value, stat }: progressBarProps) {
+export default function ProgressBar({ value, stat, type }: progressBarProps) {
   const [nameStat, setNameStat] = useState("");
 
   useEffect(() => {
@@ -58,10 +59,10 @@ export default function ProgressBar({ value, stat }: progressBarProps) {
           id={`progress-${stat}`}
           value={value}
           max={value + 100}
-          className="w-full h-1 items-center flex appearance-none rounded-sm
-                   [&::-webkit-progress-bar]:rounded-sm [&::-webkit-progress-bar]:bg-gray-200
-                   [&::-webkit-progress-value]:rounded-sm [&::-webkit-progress-value]:bg-grass
-                   [&::-moz-progress-bar]:bg-green-500 [&::-moz-progress-bar]:rounded-sm"
+          className={`w-full h-2 items-center flex appearance-none
+                   [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-${type}/35
+                   [&::-webkit-progress-value]:rounded-l-full [&::-webkit-progress-value]:bg-${type || "medium"}
+                   [&::-moz-progress-bar]:bg-${type} [&::-moz-progress-bar]:rounded-sm`}
         />
       </div>
     </div>

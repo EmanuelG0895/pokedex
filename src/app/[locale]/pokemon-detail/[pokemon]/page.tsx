@@ -18,20 +18,20 @@ export default function PokemonDetails() {
     fetch(`/api/pokemonDetail?name=${pokemon}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setPokemonImage(
           data.sprites?.other?.["official-artwork"]?.front_default
         );
         setPokemonStats(data.stats);
         setPokemonType(data.types[0].type.name);
+        console.log(data.types[0].type.name)
       })
       .catch((err) => {
         console.error("Error:", err);
       });
   }, [pokemon]);
-  console.log("bg-" + pokemonType);
+
   return (
-    <main className="bg-light h-svh w-full px-2.5">
+    <main className={`bg-${pokemonType} h-svh w-full px-2.5`}>
       <header className="pokeball-background">
         <div className="text-white font-bold flex items-center justify-between p-4">
           <button
@@ -77,6 +77,7 @@ export default function PokemonDetails() {
                 key={index}
                 stat={pokemon.stat.name}
                 value={pokemon.base_stat}
+                type={pokemonType}
               />
             );
           })}
