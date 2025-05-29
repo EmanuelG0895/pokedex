@@ -3,12 +3,12 @@ const BASE_URL = process.env.PokeAPI_URL;
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
-  const limit = searchParams.get("limit") || "29";
-  const offset = searchParams.get("offset") || "0";
+  const name = searchParams.get("name") || "29";
+ 
 
   try {
     const response = await fetch(
-      `${BASE_URL}/pokemon?limit=${limit}&offset=${offset}`
+      `${BASE_URL}/pokemon/${name}`
     );
     const data = await response.json();
     return Response.json(data);

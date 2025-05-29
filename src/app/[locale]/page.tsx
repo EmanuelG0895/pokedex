@@ -7,7 +7,7 @@ import PokemonCard from "@/components/pokemon-card";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [pokemonList, setPokemonList] = useState<any[]>([]);
   const limit = 153;
   const [offset, setOffset] = useState(0);

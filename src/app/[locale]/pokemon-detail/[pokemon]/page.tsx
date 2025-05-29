@@ -9,11 +9,29 @@ export default function PokemonDetails() {
   const params = useParams();
   const { pokemon } = params as { pokemon: string };
   const router = useRouter();
+  const [pokemonImage, setPokemonImage] = useState("");
+  const [pokemonStats, setPokemonStats] = useState([]);
+
+  useEffect(() => {
+    if (!pokemon) return;
+    fetch(`/api/pokemonDetail?name=${pokemon}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setPokemonImage(
+          data.sprites?.other?.["official-artwork"]?.front_default
+        );
+        setPokemonStats(data.stats);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
+  }, [pokemon]);
 
   return (
-    <main className="bg-light h-svh p-2 w-full">
-      <header className="bg-[url('/icons/pokeball-opacity.svg')] h-60 relative bg-no-repeat bg-right-top bg-[length:65%] md:bg-[length:30%] lg:bg-[length:20%] lg:bg-[position:right_center] xl:bg-[length:14%]">
-        <div className="text-white font-bold flex items-center justify-between px-4">
+    <main className="bg-light h-svh w-full px-2.5">
+      <header className="pokeball-background">
+        <div className="text-white font-bold flex items-center justify-between p-4">
           <button
             onClick={() => router.back()}
             aria-label="Go back"
@@ -27,36 +45,37 @@ export default function PokemonDetails() {
             />
           </button>
           <h1 className="capitalize text-2xl md:text-3xl">{pokemon}</h1>
-          <span className="md:text-base text-xs">#100</span>
-        </div>
-        <div className="absolute top-11/12 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <img
-            className="h-58 w-52"
-            src="/images/default-pokemon.svg"
-            alt={`Image of ${pokemon}`}
-          />
+          <p className="md:text-base text-xs">#100</p>
         </div>
       </header>
-      <section className="bg-white flex flex-col rounded-lg space-y-4 text-center mt-2 lg:w-full mx-auto">
-        <div className="flex justify-center space-x-4 mt-16">
+      <section className="flex justify-center absolute right-0 left-0 top-24">
+        <img
+          className="max-w-52 max-h-52"
+          src={pokemonImage || "/images/default-pokemon.svg"}
+          alt=""
+        />
+      </section>
+      <section className="bg-white flex flex-col rounded-lg space-y-4 text-center lg:w-full mx-auto">
+        <div className="flex justify-center space-x-4 mt-14">
           <PokemonType pokemonType="type" className="bg-amber-500" />
           <PokemonType pokemonType="type" className="bg-amber-500" />
         </div>
-        <h2 className="text-light font-bold capitalize text-[16px]">
+        <h2 className="text-light font-bold capitalize text-base">
           add to fav add to team
         </h2>
-        <div className="divide-x flex justify-center">
-          <About />
-          <About />
+        <div className="divide-x flex justify-center ">
           <About />
         </div>
-        <div className="container mx-auto w-full p-4">
-          <ProgressBar stat="HP" value="50" />
-          <ProgressBar stat="HP" value="50" />
-          <ProgressBar stat="HP" value="50" />
-          <ProgressBar stat="HP" value="50" />
-          <ProgressBar stat="HP" value="50" />
-          <ProgressBar stat="HP" value="50" />
+        <div className="container mx-auto w-full p-4 ">
+          {pokemonStats?.map((pokemon: any, index: number) => {
+            return (
+              <ProgressBar
+                key={index}
+                stat={pokemon.stat.name}
+                value={pokemon.base_stat}
+              />
+            );
+          })}
         </div>
       </section>
     </main>
