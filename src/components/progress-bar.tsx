@@ -31,14 +31,14 @@ export default function ProgressBar({ value, stat }: progressBarProps) {
   }, [stat]);
 
   // Formatear el valor para que siempre tenga 3 dígitos
-  // const formattedValue = value.padStart(3, "0");
+  const formattedValue = String(value).padStart(3, "0");
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center space-x-2">
       {/* Etiqueta del stat */}
-      <div className="w-12 text-right border-r pr-3 border-light" >
+      <div className="w-12 text-right border-r border-light pr-2">
         <label
-          className="text-sm font-medium text-gray-700 uppercase"
+          className="text-sm font-bold text-gray-700 uppercase"
           htmlFor={`progress-${stat}`}
         >
           {nameStat}
@@ -47,7 +47,9 @@ export default function ProgressBar({ value, stat }: progressBarProps) {
 
       {/* Valor numérico */}
       <div className="w-8">
-        <span className="text-sm font-medium text-gray-900">{value}</span>
+        <span className="text-sm md:text-base font-medium text-black">
+          {formattedValue}
+        </span>
       </div>
 
       {/* Barra de progreso */}
@@ -55,7 +57,7 @@ export default function ProgressBar({ value, stat }: progressBarProps) {
         <progress
           id={`progress-${stat}`}
           value={value}
-          max="100"
+          max={value + 100}
           className="w-full h-1 items-center flex appearance-none rounded-sm
                    [&::-webkit-progress-bar]:rounded-sm [&::-webkit-progress-bar]:bg-gray-200
                    [&::-webkit-progress-value]:rounded-sm [&::-webkit-progress-value]:bg-grass

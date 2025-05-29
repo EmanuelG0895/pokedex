@@ -11,6 +11,7 @@ export default function PokemonDetails() {
   const router = useRouter();
   const [pokemonImage, setPokemonImage] = useState("");
   const [pokemonStats, setPokemonStats] = useState([]);
+  const [pokemonType, setPokemonType] = useState("");
 
   useEffect(() => {
     if (!pokemon) return;
@@ -22,12 +23,13 @@ export default function PokemonDetails() {
           data.sprites?.other?.["official-artwork"]?.front_default
         );
         setPokemonStats(data.stats);
+        setPokemonType(data.types[0].type.name);
       })
       .catch((err) => {
         console.error("Error:", err);
       });
   }, [pokemon]);
-
+  console.log("bg-" + pokemonType);
   return (
     <main className="bg-light h-svh w-full px-2.5">
       <header className="pokeball-background">
@@ -57,8 +59,10 @@ export default function PokemonDetails() {
       </section>
       <section className="bg-white flex flex-col rounded-lg space-y-4 text-center lg:w-full mx-auto">
         <div className="flex justify-center space-x-4 mt-14">
-          <PokemonType pokemonType="type" className="bg-amber-500" />
-          <PokemonType pokemonType="type" className="bg-amber-500" />
+          <PokemonType
+            pokemonType={pokemonType}
+            className={"bg-" + pokemonType}
+          />
         </div>
         <h2 className="text-light font-bold capitalize text-base">
           add to fav add to team
