@@ -1,9 +1,43 @@
 @import "tailwindcss";
+progress {
+  width: 100%; /* w-full */
+  height: 0.5rem; /* h-2 */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  appearance: none; /* appearance-none */
+}
+progress-bar::-webkit-progress-bar {
+  background-color: var(--bar-color);
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-background: #efefef;
+  --color-bug: #a7b723;
+  --color-dark: #212121;
+  --color-dragon: #7037ff;
+  --color-electric: #f9cf30;
+  --color-fairy: #e69eac;
+  --color-fighting: #c12239;
+  --color-fire: #f57d31;
+  --color-flying: #a891ec;
+  --color-ghost: #70559b;
+  --color-grass: #74cb48;
+  --color-ground: #dec16b;
+  --color-ice: #9ad6df;
+  --color-light: #e0e0e0;
+  --color-medium: #666666;
+  --color-normal: #aaa67f;
+  --color-poison: #a43e9e;
+  --color-primary: #dc0a2d;
+  --color-psychic: #fb5584;
+  --color-rock: #b69e31;
+  --color-steel: #b7b9d0;
+  --color-water: #6493eb;
+  --color-white: #ffffff;
+  --color-wireframe: #b8b8b8;
 }
 @theme {
   --color-background: #efefef;

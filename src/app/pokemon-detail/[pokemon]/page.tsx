@@ -4,34 +4,33 @@ import { useParams, useRouter } from "next/navigation";
 import PokemonType from "@/components/pokemon-type";
 import About from "@/components/about";
 import ProgressBar from "@/components/progress-bar";
+import { getPokemonDetail } from "@/utils/getPokemonDetail";
 
 export default function PokemonDetails() {
   const params = useParams();
   const { pokemon } = params as { pokemon: string };
   const router = useRouter();
-  const [pokemonImage, setPokemonImage] = useState("");
-  const [pokemonStats, setPokemonStats] = useState([]);
-  const [pokemonType, setPokemonType] = useState("");
-
+  const [pokemonImage, setPokemonImage] = useState<string | null>(null);
+  const [pokemonStats, setPokemonStats] = useState<any[]>([]);
+  const [pokemonType, setPokemonType] = useState<any>([]);
+  const [pokemonColor, setPokemonColor] = useState<string>("");
+  async function fetchPokemonDetails() {
+    const { pokemonImage, pokemonStats, pokemonType, pokemonColor } =
+      await getPokemonDetail(pokemon);
+    setPokemonImage(pokemonImage); // URL de la imagen
+    setPokemonStats(pokemonStats); // Array de stats
+    setPokemonType(pokemonType); // "grass", "fire", etc.
+    setPokemonColor(pokemonColor); // "grass", "fire", etc.
+  }
   useEffect(() => {
-    if (!pokemon) return;
-    fetch(`/api/pokemonDetail?name=${pokemon}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setPokemonImage(
-          data.sprites?.other?.["official-artwork"]?.front_default
-        );
-        setPokemonStats(data.stats);
-        setPokemonType(data.types[0].type.name);
-        console.log(data.types[0].type.name)
-      })
-      .catch((err) => {
-        console.error("Error:", err);
-      });
+    fetchPokemonDetails();
   }, [pokemon]);
 
   return (
-    <main className={`bg-${pokemonType} h-svh w-full px-2.5`}>
+    <main
+      className="h-svh w-full px-2.5"
+      style={{ backgroundColor: pokemonColor }}
+    >
       <header className="pokeball-background">
         <div className="text-white font-bold flex items-center justify-between p-4">
           <button
@@ -59,10 +58,7 @@ export default function PokemonDetails() {
       </section>
       <section className="bg-white flex flex-col rounded-lg space-y-4 text-center lg:w-full mx-auto">
         <div className="flex justify-center space-x-4 mt-14">
-          <PokemonType
-            pokemonType={pokemonType}
-            className={"bg-" + pokemonType}
-          />
+          <PokemonType pokemonType={pokemonType} color={pokemonColor} />
         </div>
         <h2 className="text-light font-bold capitalize text-base">
           add to fav add to team
@@ -77,7 +73,7 @@ export default function PokemonDetails() {
                 key={index}
                 stat={pokemon.stat.name}
                 value={pokemon.base_stat}
-                type={pokemonType}
+                type={pokemonColor}
               />
             );
           })}
