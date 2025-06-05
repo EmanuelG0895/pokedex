@@ -58,7 +58,7 @@ export default function PokemonDetails() {
       </section>
       <section className="bg-white flex flex-col rounded-lg space-y-4 text-center lg:w-full mx-auto">
         <div className="flex justify-center space-x-4 mt-14">
-          <PokemonType pokemonType={pokemonType} color={pokemonColor} />
+          <PokemonType pokemonType={pokemonType} />
         </div>
         <h2 className="text-light font-bold capitalize text-base">
           add to fav add to team
@@ -73,7 +73,7 @@ export default function PokemonDetails() {
                 key={index}
                 stat={pokemon.stat.name}
                 value={pokemon.base_stat}
-                type={pokemonColor}
+                type={pokemonType}
               />
             );
           })}

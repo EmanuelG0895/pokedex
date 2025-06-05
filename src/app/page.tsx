@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [pokemonList, setPokemonList] = useState<any[]>([]);
-  const limit = 153;
+  const limit = 150;
   const [offset, setOffset] = useState(0);
   const totalItems = 1500;
   const totalPages = Math.ceil(totalItems / limit);
