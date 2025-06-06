@@ -10,10 +10,10 @@ export default function ProfileMenu() {
       <summary className="flex items-center justify-center cursor-pointer px-2 py-1 rounded">
         <img
           className="rounded-full w-10 h-10 mr-4"
-          src={session?.user?.image ?? "/images/pokeball-white.svg"}
+          src={session?.user?.image ?? "/icons/user.svg"}
           alt="User Avatar"
         />
-        <h1 className="font-bold text-white text-xl md:text-3xl">
+        <h1 className="font-bold text-white text-xl hidden md:block  md:text-3xl">
           {session?.user?.name || "Pokédex"}
         </h1>
       </summary>

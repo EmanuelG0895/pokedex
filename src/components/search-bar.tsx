@@ -2,7 +2,7 @@
 export default function SearchBar() {
   return (
     <>
-      <div className="relative flex items-center w-full">
+      <div className="relative flex items-center">
         <img
           src="/navigation/search.svg"
           alt=""

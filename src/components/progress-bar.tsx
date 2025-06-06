@@ -38,10 +38,7 @@ export default function ProgressBar({ value, stat, type }: progressBarProps) {
     <div className="flex items-center space-x-2">
       {/* Etiqueta del stat */}
       <div className="w-12 text-right border-r border-light pr-2">
-        <label
-          className="text-sm font-bold text-gray-700 uppercase"
-          htmlFor={`progress-${stat}`}
-        >
+        <label className="text-sm font-bold text-gray-700 uppercase">
           {nameStat}
         </label>
       </div>
@@ -54,15 +51,18 @@ export default function ProgressBar({ value, stat, type }: progressBarProps) {
       </div>
 
       {/* Barra de progreso */}
-      <div className="flex-1">
-        <progress
-          id={`progress-${stat}`}
-          value={value}
-          max={value + 100}
-          className={`w-full h-2 items-center flex appearance-none
-                   [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-${type}/35
-                   [&::-webkit-progress-value]:rounded-l-full [&::-webkit-progress-value]:bg-${type || "medium"}
-                   [&::-moz-progress-bar]:bg-${type} [&::-moz-progress-bar]:rounded-sm`}
+      <div
+        className="w-full rounded-full h-1.5 flex-1 items-center"
+        style={{
+          backgroundColor: `var(--color-${type[0]}-transparent`,
+        }}
+      >
+        <div
+          className="h-1.5 rounded-l-full "
+          style={{
+            width: `${value}px`,
+            backgroundColor: `var(--color-${type[0]})`,
+          }}
         />
       </div>
     </div>
