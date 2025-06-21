@@ -35,7 +35,30 @@ export const getPokemonDetail = async (pokemon: string) => {
     const pokemonType: string[] =
       data.types?.map((pokemon: any) => pokemon.type.name) || [];
     const pokemonColor = typeColors[pokemonType[0]] || typeColors["medium"];
-    return { pokemonImage, pokemonStats, pokemonType, pokemonColor };
+    const height = data.height;
+    const weight = data.weight;
+
+    // Mapeo completo de movimientos con sus métodos y versiones
+    const allMoves =
+      data.moves?.map((move: any) => ({
+        name: move.move.name,
+        methods: move.version_group_details.map((detail: any) => ({
+          method: detail.move_learn_method.name,
+          version: detail.version_group.name,
+          level: detail.level_learned_at,
+        })),
+      })) || [];
+    console.log(allMoves);
+
+    return {
+      pokemonImage,
+      pokemonStats,
+      pokemonType,
+      pokemonColor,
+      height,
+      weight,
+      moves: allMoves,
+    };
   } catch (err) {
     console.error("Error fetching Pokémon detail:", err);
     throw err;

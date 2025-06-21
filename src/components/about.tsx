@@ -1,6 +1,11 @@
 import React from "react";
+interface AboutProps {
+  weight: string;
+  height: string;
+  moves: string[];
+}
 
-export default function About() {
+export default function About({ weight, height, moves }: AboutProps) {
   return (
     <div className="flex flex-col items-center justify-center text-center px-6">
       <div className="flex items-center">
