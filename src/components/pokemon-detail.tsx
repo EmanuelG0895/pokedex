@@ -6,7 +6,7 @@ import About from "@/components/about";
 import ProgressBar from "@/components/progress-bar";
 import { getPokemonDetail } from "@/utils/getPokemonDetail";
 
-import AddTeam from "@/components/add-team";
+import AddTeam from "@/components/team/add-team";
 import FavoriteButton from "@/components/favorite-button";
 
 export default function PokemonDetails() {

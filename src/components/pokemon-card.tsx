@@ -10,7 +10,7 @@ export default function PokemonCard({ url }: PokemonCardParams) {
     const fetchPokemon = async () => {
       try {
         const response = await fetch(url);
-        const data = await response.json(); // Esperar la conversión a JSON
+        const data = await response.json();
         setPokemonData(data);
       } catch (error) {
         console.error("Error fetching Pokémon:", error);
