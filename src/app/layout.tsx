@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Pokedex",
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body>
+      <body className="bg-primary">
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
