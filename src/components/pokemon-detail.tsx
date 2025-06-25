@@ -9,6 +9,7 @@ import { getPokemonDetail } from "@/utils/getPokemonDetail";
 import AddTeam from "@/components/team/add-team";
 import FavoriteButton from "@/components/favorite-button";
 import AllMoves from "./all-moves";
+import Modal from "./ui/modal";
 
 export default function PokemonDetails() {
   const params = useParams();
@@ -21,7 +22,7 @@ export default function PokemonDetails() {
   const [height, setHeight] = useState<number>(0);
   const [weight, setWeight] = useState<number>(0);
   const [moves, setMoves] = useState<any[]>([]);
-
+  const [isOpen, setIsOpen] = useState(false);
   async function fetchPokemonDetails() {
     const {
       pokemonImage,
@@ -84,7 +85,10 @@ export default function PokemonDetails() {
         </div>
         <div className="divide-x flex justify-center">
           <About height={height} moves={moves} weight={weight} />
-          <AllMoves name={pokemon} />
+          <button onClick={() => setIsOpen(true)}>More Moves</button>
+          <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <AllMoves name={pokemon} />
+          </Modal>
         </div>
         <section className="container mx-auto p-4 w-full md:p-0">
           {pokemonStats?.map((pokemon: any, index: number) => {
