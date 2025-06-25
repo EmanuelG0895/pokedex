@@ -31,6 +31,7 @@ export default function PokemonCard({ url }: PokemonCardParams) {
           </p>
         </div>
         <img
+          loading="lazy"
           className="absolute max-w-[72px] max-h-[72px] top-0 bottom-5 left-0 right-0 m-auto md:top-4"
           src={
             pokemonData?.sprites?.other?.["official-artwork"]?.front_default

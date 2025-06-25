@@ -13,9 +13,11 @@ export default function FavoriteButton({ pokemon }: { pokemon: string }) {
   const handleClick = () => {
     if (typeof window !== "undefined") {
       const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-      
+
       if (isFavorite) {
-        const updatedFavorites = favorites.filter((fav: string) => fav !== pokemon);
+        const updatedFavorites = favorites.filter(
+          (fav: string) => fav !== pokemon
+        );
         localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
         setIsFavorite(false);
       } else {
@@ -32,8 +34,12 @@ export default function FavoriteButton({ pokemon }: { pokemon: string }) {
       onClick={handleClick}
     >
       <img
-        src={isFavorite ? "/icons/favorite-filled.svg" : "/icons/favorite-outline.svg"}
-        className="w-6 h-6"
+        src={
+          isFavorite
+            ? "/icons/favorite-filled.svg"
+            : "/icons/favorite-outline.svg"
+        }
+        className="min-w-9 min-h-9"
         alt="Favorite logo"
       />
     </button>

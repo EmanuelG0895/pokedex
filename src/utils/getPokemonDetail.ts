@@ -48,7 +48,6 @@ export const getPokemonDetail = async (pokemon: string) => {
           level: detail.level_learned_at,
         })),
       })) || [];
-    console.log(allMoves);
 
     return {
       pokemonImage,

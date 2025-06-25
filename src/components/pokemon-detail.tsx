@@ -8,6 +8,7 @@ import { getPokemonDetail } from "@/utils/getPokemonDetail";
 
 import AddTeam from "@/components/team/add-team";
 import FavoriteButton from "@/components/favorite-button";
+import AllMoves from "./all-moves";
 
 export default function PokemonDetails() {
   const params = useParams();
@@ -17,14 +18,27 @@ export default function PokemonDetails() {
   const [pokemonStats, setPokemonStats] = useState<any[]>([]);
   const [pokemonType, setPokemonType] = useState<any>([]);
   const [pokemonColor, setPokemonColor] = useState<string>("");
+  const [height, setHeight] = useState<number>(0);
+  const [weight, setWeight] = useState<number>(0);
+  const [moves, setMoves] = useState<any[]>([]);
 
   async function fetchPokemonDetails() {
-    const { pokemonImage, pokemonStats, pokemonType, pokemonColor } =
-      await getPokemonDetail(pokemon);
+    const {
+      pokemonImage,
+      pokemonStats,
+      pokemonType,
+      pokemonColor,
+      height,
+      weight,
+      moves,
+    } = await getPokemonDetail(pokemon);
     setPokemonImage(pokemonImage);
     setPokemonStats(pokemonStats);
     setPokemonType(pokemonType);
     setPokemonColor(pokemonColor);
+    setHeight(height);
+    setWeight(weight);
+    setMoves(moves);
   }
   useEffect(() => {
     fetchPokemonDetails();
@@ -63,13 +77,14 @@ export default function PokemonDetails() {
       <section className="bg-white flex flex-col justify-between lg:w-full mx-auto rounded-lg">
         <div className="container flex flex-row items-start justify-between mx-auto p-4 pt-4 space-y-4 w-full z-50 md:justify-start md:space-x-4 md:space-y-0">
           <FavoriteButton pokemon={pokemon} />
-          <AddTeam />
+          <AddTeam pokemonName={pokemon} />
         </div>
         <div className="flex justify-center space-x-4">
           <PokemonType pokemonType={pokemonType} />
         </div>
         <div className="divide-x flex justify-center">
-          <About height="" moves={[]} weight="" />
+          <About height={height} moves={moves} weight={weight} />
+          <AllMoves name={pokemon} />
         </div>
         <section className="container mx-auto p-4 w-full md:p-0">
           {pokemonStats?.map((pokemon: any, index: number) => {
